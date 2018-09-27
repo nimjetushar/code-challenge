@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
+import { BookingSystemService } from './services/booking-system.service';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [BookingSystemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
