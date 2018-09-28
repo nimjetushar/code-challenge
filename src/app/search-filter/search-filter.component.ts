@@ -8,14 +8,13 @@ import { IMyDpOptions } from 'mydatepicker';
 })
 export class SearchFilterComponent {
 
-  isOneWay: boolean;
+  isOneWay = true;
   datePickerOptions: IMyDpOptions;
   returnDate: any;
   deptDate: any;
-  priceRange: number;
+  priceRange = 10000;
 
   constructor() {
-    this.isOneWay = true;
     this.datePickerOptions = {
       dateFormat: 'dd.mm.yyyy',
     };
