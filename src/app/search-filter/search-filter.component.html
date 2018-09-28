@@ -1,3 +1,56 @@
-<p>
-  search-filter works!
-</p>
+<div class="search-filter-container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': isOneWay}" (click)="switchTab(true)" href="#">One
+        Way</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': !isOneWay}" (click)="switchTab(false)"
+        href="#">Return</a>
+    </li>
+  </ul>
+
+  <div class="fields-section">
+    <form #searchForm="ngForm" novalidate>
+      <div class="form-group auto-complete">
+        <input type="text" name="originCity" ngModel class="form-control" id="originCity"
+          placeholder="Enter city name" required>
+        <!-- <ul class="list-group auto-complete-list">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul> -->
+      </div>
+      <div class="form-group">
+        <input type="text" name="destinationCity" ngModel class="form-control" id="destinationCity"
+          placeholder="Enter city name" required>
+      </div>
+      <div class="form-group">
+        <my-date-picker name="departurenDate" [options]="datePickerOptions" placeholder="Departure Date"
+          [(ngModel)]="deptDate" required></my-date-picker>
+      </div>
+      <div class="form-group">
+        <my-date-picker *ngIf="!isOneWay" name="returnDate" [options]="datePickerOptions"
+          placeholder="Return Date" [(ngModel)]="returnDate" required></my-date-picker>
+      </div>
+      <div class="form-group">
+        <input type="number" name="noPassenger" ngModel class="form-control" id="noPassenger"
+          placeholder="Passenger" required>
+      </div>
+      <button class="btn btn-primary" (click)="searchCriteria(searchForm)">Search</button>
+    </form>
+  </div>
+  <div class="range-sel">
+    <h5>Refine flight search</h5>
+    <div class="row">
+      <div class="col-1">0</div>
+      <div class="slide-container col-8">
+        <input type="range" min="1" max="10000" value="10000" [(ngModel)]="priceRange"
+          class="slider" id="myRange">
+      </div>
+      <div class="col-2">1000</div>
+    </div>
+  </div>
+</div>
