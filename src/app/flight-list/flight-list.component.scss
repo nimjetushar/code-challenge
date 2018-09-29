@@ -1,3 +1,19 @@
 .flight-list-container {
-    
+    .panel-name {
+        .tour-loc {}
+    }
+    .flight-list {
+        .flight-name {
+            font-size: 12px;
+        }
+        .flight-detail {
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .right-cont {
+            img {
+                height: 9em;
+            }
+        }
+    }
 }
