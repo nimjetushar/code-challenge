@@ -1,124 +1,36 @@
 {
     "flight_data": [
         {
-            "flight_id": 1,
-            "from": "Pune",
-            "to": "Nagpur",
-            "price": 83,
-            "departure": "2018-08-03T15:58:23Z",
-            "arrival": "2017-10-01T20:58:59Z"
+            "flightName": "A-201",
+            "from": "pune",
+            "to": "nagpur",
+            "price": 1000,
+            "departure": "2018-09-29T15:58:23Z",
+            "arrival": "2018-10-30T20:58:59Z"
         },
         {
-            "flight_id": 2,
-            "from": "Delhi",
-            "to": "Nagpur",
-            "price": 43,
-            "departure": "2018-09-10T14:52:01Z",
-            "arrival": "2017-12-11T09:01:54Z"
-        },
-        {
-            "flight_id": 3,
-            "from": "Nagpur",
-            "to": "Delhi",
+            "flightName": "A-206",
+            "from": "pune",
+            "to": "nagpur",
             "price": 19,
-            "departure": "2018-06-23T18:00:14Z",
-            "arrival": "2017-09-27T06:50:12Z"
+            "departure": "2018-09-29T18:00:14Z",
+            "arrival": "2018-10-30T06:50:12Z"
         },
         {
-            "flight_id": 4,
-            "from": "Banglore",
-            "to": "Delhi",
-            "price": 34,
-            "departure": "2018-09-14T15:45:03Z",
-            "arrival": "2018-06-22T16:15:59Z"
+            "flightName": "A-202",
+            "from": "nagpur",
+            "to": "pune",
+            "price": 1000,
+            "departure": "2018-10-01T15:58:23Z",
+            "arrival": "2018-10-02T20:58:59Z"
         },
         {
-            "flight_id": 5,
-            "from": "Mumbai",
-            "to": "Delhi",
-            "price": 48,
-            "departure": "2018-09-13T17:21:10Z",
-            "arrival": "2017-12-26T22:04:30Z"
-        },
-        {
-            "flight_id": 6,
-            "from": "Nagpur",
-            "to": "Banglore",
-            "price": 33,
-            "departure": "2018-08-14T00:04:12Z",
-            "arrival": "2017-11-18T07:30:57Z"
-        },
-        {
-            "flight_id": 7,
-            "from": "Mumbai",
-            "to": "Banglore",
-            "price": 71,
-            "departure": "2018-09-07T19:37:20Z",
-            "arrival": "2017-10-30T09:46:27Z"
-        },
-        {
-            "flight_id": 8,
-            "from": "Delhi",
-            "to": "Banglore",
-            "price": 58,
-            "departure": "2018-07-21T05:43:48Z",
-            "arrival": "2018-04-08T17:38:35Z"
-        },
-        {
-            "flight_id": 9,
-            "from": "Mumbai",
-            "to": "Banglore",
-            "price": 41,
-            "departure": "2018-06-03T01:35:43Z",
-            "arrival": "2018-04-24T23:01:47Z"
-        },
-        {
-            "flight_id": 10,
-            "from": "Delhi",
-            "to": "Pune",
-            "price": 58,
-            "departure": "2018-06-24T02:34:28Z",
-            "arrival": "2018-07-10T00:55:54Z"
-        },
-        {
-            "flight_id": 11,
-            "from": "Banglore",
-            "to": "Pune",
-            "price": 83,
-            "departure": "2018-08-14T09:56:10Z",
-            "arrival": "2018-04-06T13:07:56Z"
-        },
-        {
-            "flight_id": 12,
-            "from": "Pune",
-            "to": "Mumbai",
-            "price": 2,
-            "departure": "2018-07-25T13:08:39Z",
-            "arrival": "2018-01-17T06:32:40Z"
-        },
-        {
-            "flight_id": 13,
-            "from": "Delhi",
-            "to": "Banglore",
-            "price": 83,
-            "departure": "2018-06-05T22:37:27Z",
-            "arrival": "2018-04-23T11:05:43Z"
-        },
-        {
-            "flight_id": 14,
-            "from": "Banglore",
-            "to": "Pune",
-            "price": 26,
-            "departure": "2018-07-08T19:17:13Z",
-            "arrival": "2018-06-19T22:02:56Z"
-        },
-        {
-            "flight_id": 15,
-            "from": "Nagpur",
-            "to": "Pune",
-            "price": 95,
-            "departure": "2018-08-13T05:14:50Z",
-            "arrival": "2018-05-02T14:24:24Z"
+            "flightName": "A-203",
+            "from": "nagpur",
+            "to": "pune",
+            "price": 43,
+            "departure": "2018-10-01T14:52:01Z",
+            "arrival": "2018-10-02T09:01:54Z"
         }
     ]
 }

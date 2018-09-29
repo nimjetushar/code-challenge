@@ -5,8 +5,8 @@
     </header>
     <section class="container-fluid body-section">
         <div class="row">
-            <app-search-filter class="col-xs-12 col-md-4 col-lg-4"></app-search-filter>
-            <app-flight-list class="col-xs-12 col-md-8 col-lg-8"></app-flight-list>
+            <app-search-filter class="col-xs-12 col-md-4 col-lg-4" (searchData)="searchFilter($event)"></app-search-filter>
+            <app-flight-list class="col-xs-12 col-md-8 col-lg-8" [searchCriteria]="searchCriteria"></app-flight-list>
         </div>
     </section>
 </div>

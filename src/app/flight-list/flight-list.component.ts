@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SearchCriteria, FlightDetail } from './../interfaces/app.interface';
+import { BookingSystemService } from '../services/booking-system.service';
 
 @Component({
   selector: 'app-flight-list',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightListComponent implements OnInit {
 
-  constructor() { }
+  isOneWay: boolean;
+  showError: boolean;
+  flightResult: Array<FlightDetail>;
 
-  ngOnInit() {
+  private _searchCriteria: SearchCriteria = <any>{};
+
+  @Input() set searchCriteria(data: SearchCriteria) {
+    if (data) {
+      this.isOneWay = data.isOneWay;
+      this.showError = false;
+      this._searchCriteria = Object.assign({}, data);
+      this.bookingSystem.fetchFlightData(this.searchCriteria);
+    } else {
+      this.showError = true;
+    }
   }
+
+  get searchCriteria(): SearchCriteria {
+    return this._searchCriteria;
+  }
+
+  constructor(private bookingSystem: BookingSystemService) { }
+
+  ngOnInit() { }
 
 }

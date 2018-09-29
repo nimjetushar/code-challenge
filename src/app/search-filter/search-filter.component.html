@@ -14,18 +14,19 @@
     <form #searchForm="ngForm" novalidate>
       <div class="form-group auto-complete">
         <input type="text" name="originCity" ngModel class="form-control" id="originCity"
-          placeholder="Enter city name" required>
-        <!-- <ul class="list-group auto-complete-list">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul> -->
+          placeholder="Enter city name" #originCity="ngModel" autocomplete="new_ele"
+          required>
+        <ul class="list-group auto-complete-list" *ngIf="originCityList?.length">
+          <li class="list-group-item" *ngFor="let item of originCityList" (click)="selectCity(item, 'originCity')">{{item}}</li>
+        </ul>
       </div>
-      <div class="form-group">
+      <div class="form-group auto-complete">
         <input type="text" name="destinationCity" ngModel class="form-control" id="destinationCity"
-          placeholder="Enter city name" required>
+          placeholder="Enter city name" #destinationCity="ngModel" autocomplete="new_ele"
+          required>
+        <ul class="list-group auto-complete-list" *ngIf="destinationCityList?.length">
+          <li class="list-group-item" *ngFor="let item of destinationCityList" (click)="selectCity(item, 'destinationCity')">{{item}}</li>
+        </ul>
       </div>
       <div class="form-group">
         <my-date-picker name="departurenDate" [options]="datePickerOptions" placeholder="Departure Date"
@@ -37,7 +38,7 @@
       </div>
       <div class="form-group">
         <input type="number" name="noPassenger" ngModel class="form-control" id="noPassenger"
-          placeholder="Passenger" required>
+          placeholder="Passenger" autocomplete="new_ele" required>
       </div>
       <button class="btn btn-primary" (click)="searchCriteria(searchForm)" [disabled]="!searchForm.valid">Search</button>
     </form>
@@ -47,8 +48,8 @@
     <div class="row">
       <div class="col-1">0</div>
       <div class="slide-container col-8">
-        <input type="range" min="1" max="10000" [(ngModel)]="priceRange"
-          class="slider" id="myRange">
+        <input type="range" min="1" max="10000" [(ngModel)]="priceRange" class="slider"
+          id="myRange">
       </div>
       <div class="col-2">1000</div>
     </div>

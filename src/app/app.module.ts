@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { MyDatePickerModule } from 'mydatepicker';
 import { FormsModule } from '@angular/forms';
 
+import * as moment from 'moment';
+
 import { AppComponent } from './app.component';
 import { BookingSystemService } from './services/booking-system.service';
 import { SearchFilterComponent } from './search-filter/search-filter.component';

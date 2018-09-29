@@ -1,23 +1,18 @@
 import { Injectable } from '@angular/core';
+import { FlightDetail, SearchCriteria } from '../interfaces/app.interface';
 
 declare var require: any;
-
-export interface FlightDetail {
-  flight_id: number;
-  from: string;
-  to: string;
-  price: number;
-  departure: string;
-  arrival: string;
-}
+declare var moment: any;
 
 @Injectable()
 export class BookingSystemService {
 
-  private flightDetails: FlightDetail[] = require('../../assets/dummyData.json');
+  private flightDetails: FlightDetail[] = require('../../assets/dummyData.json').flight_data;
 
-  constructor() {
-    console.log(this.flightDetails);
-   }
+  constructor() { }
+
+  fetchFlightData(searchCriteria: SearchCriteria) {
+    const from = searchCriteria.departurenDate;
+  }
 
 }
