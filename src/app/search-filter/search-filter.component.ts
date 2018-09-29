@@ -70,8 +70,8 @@ export class SearchFilterComponent implements AfterViewInit {
   searchCriteria(form: NgForm): void {
     const data = form.value,
       searchCriteria: SearchCriteria = {
-        departurenDate: data.departurenDate && data.departurenDate.jsdate,
-        returnDate: data.returnDate && data.returnDate.jsdate,
+        departurenDate: data.departurenDate && data.departurenDate.formatted,
+        returnDate: data.returnDate && data.returnDate.formatted,
         originCity: data.originCity,
         destinationCity: data.destinationCity,
         isOneWay: this.isOneWay,

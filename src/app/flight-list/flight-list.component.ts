@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
 import { SearchCriteria, FlightDetail } from './../interfaces/app.interface';
 import { BookingSystemService } from '../services/booking-system.service';
 
@@ -7,7 +9,7 @@ import { BookingSystemService } from '../services/booking-system.service';
   templateUrl: './flight-list.component.html',
   styleUrls: ['./flight-list.component.scss']
 })
-export class FlightListComponent implements OnInit {
+export class FlightListComponent {
 
   isOneWay: boolean;
   showError: boolean;
@@ -20,7 +22,10 @@ export class FlightListComponent implements OnInit {
       this.isOneWay = data.isOneWay;
       this.showError = false;
       this._searchCriteria = Object.assign({}, data);
-      this.bookingSystem.fetchFlightData(this.searchCriteria);
+      this.flightResult = this.bookingSystem.fetchFlightData(this.searchCriteria);
+      if (!this.flightResult.length) {
+        this.showError = true;
+      }
     } else {
       this.showError = true;
     }
@@ -30,8 +35,11 @@ export class FlightListComponent implements OnInit {
     return this._searchCriteria;
   }
 
-  constructor(private bookingSystem: BookingSystemService) { }
+  constructor(private bookingSystem: BookingSystemService,
+    private toastr: ToastsManager) { }
 
-  ngOnInit() { }
+  bookTicket() {
+    this.toastr.success('Ticket booked successfully', 'Success!');
+  }
 
 }

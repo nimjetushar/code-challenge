@@ -2,13 +2,13 @@
     <div class="result-cont" *ngIf="!showError">
         <div class="panel-name border p-2">
             <div class="row">
-                <div class="col-8 tour-loc">
-                    <span>{{searchCriteria?.originCity}}</span>
+                <div class="col-8 tour-loc lead">
+                    <span>{{searchCriteria?.originCity | titlecase }}</span>
                     <span>></span>
-                    <span>{{searchCriteria?.destinationCity}}</span>
+                    <span>{{searchCriteria?.destinationCity | titlecase }}</span>
                     <span *ngIf="!isOneWay">
                         <span>></span>
-                        <span>{{searchCriteria?.originCity}}</span>
+                        <span>{{searchCriteria?.originCity | titlecase }}</span>
                     </span>
                 </div>
                 <div class="col-4">
@@ -18,34 +18,34 @@
             </div>
         </div>
         <div class="flight-list">
-            <div class="flight-card card" *ngFor="let flight of ">
+            <div class="flight-card card my-2" *ngFor="let flight of flightResult">
                 <div class="card-body">
                     <div class="row">
                         <div class="left-cont col-xs-12 col-md-8">
-                            <h3 class="card-title">Rs. {{searchCriteria?.priceRange}}</h3>
+                            <h3 class="card-title">Rs. {{flight.price}}</h3>
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="flight-name">A 102</div>
-                                    <div class="flight-detail">
-                                        <span>pune</span>
+                                    <div class="flight-name">{{flight.flightName}}</div>
+                                    <div class="flight-detail lead">
+                                        <span>{{flight.from | titlecase }}</span>
                                         <span>></span>
-                                        <span>pune</span>
+                                        <span>{{flight.to | titlecase }}</span>
                                     </div>
                                     <div class="flight-detail">
-                                        <span>Depart</span>
-                                        <span>Depart</span>
+                                        <span>Depart: </span>
+                                        <span>{{flight.departure | time}}</span>
                                     </div>
                                     <div class="flight-detail">
-                                        <span>Depart</span>
-                                        <span>Depart</span>
+                                        <span>Arive: </span>
+                                        <span>{{flight.arrival | time}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="right-cont col-xs-12 col-md-4">
-                            <img class="card-img-top" src="../../assets/img/no-img.jpg"
+                            <img class="card-img-top d-none d-sm-block" src="../../assets/img/no-img.jpg"
                                 alt="Card image cap">
-                            <button class="btn btn-primary btn-block">Book this flight</button>
+                            <button class="btn btn-primary btn-block" (click)="bookTicket()">Book this flight</button>
                         </div>
                     </div>
                 </div>

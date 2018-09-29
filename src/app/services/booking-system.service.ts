@@ -12,7 +12,29 @@ export class BookingSystemService {
   constructor() { }
 
   fetchFlightData(searchCriteria: SearchCriteria) {
-    const from = searchCriteria.departurenDate;
+    const departure = searchCriteria.departurenDate,
+      from = searchCriteria.originCity.toLowerCase(),
+      to = searchCriteria.destinationCity.toLowerCase(),
+      price = searchCriteria.priceRange;
+
+    const filteredFlight = this.flightDetails.filter(flight => {
+      const deptDate = this.extractDate(flight.departure);
+      return (departure === deptDate && flight.from === from && flight.to === to && price >= flight.price);
+    });
+
+    let returnFlight = [];
+    if (!searchCriteria.isOneWay) {
+      const returnDate = searchCriteria.returnDate;
+      returnFlight = this.flightDetails.filter(flight => {
+        const deptDate = this.extractDate(flight.departure);
+        return (returnDate === deptDate && flight.from === to && flight.to === from && price >= flight.price);
+      });
+    }
+
+    return filteredFlight.concat(returnFlight);
   }
 
+  private extractDate(date: any): string {
+    return moment(date).format('DD/MM/YYYY');
+  }
 }

@@ -5,15 +5,15 @@
             "from": "pune",
             "to": "nagpur",
             "price": 1000,
-            "departure": "2018-09-29T15:58:23Z",
+            "departure": "2018-10-29T15:58:23Z",
             "arrival": "2018-10-30T20:58:59Z"
         },
         {
             "flightName": "A-206",
             "from": "pune",
             "to": "nagpur",
-            "price": 19,
-            "departure": "2018-09-29T18:00:14Z",
+            "price": 6000,
+            "departure": "2018-10-29T18:00:14Z",
             "arrival": "2018-10-30T06:50:12Z"
         },
         {
@@ -28,7 +28,7 @@
             "flightName": "A-203",
             "from": "nagpur",
             "to": "pune",
-            "price": 43,
+            "price": 5000,
             "departure": "2018-10-01T14:52:01Z",
             "arrival": "2018-10-02T09:01:54Z"
         }
