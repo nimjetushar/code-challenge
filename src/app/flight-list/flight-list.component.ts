@@ -14,6 +14,7 @@ export class FlightListComponent {
   isOneWay: boolean;
   showError: boolean;
   flightResult: Array<FlightDetail>;
+  errMsg = 'Please search the filght';
 
   private _searchCriteria: SearchCriteria = <any>{};
 
@@ -25,6 +26,7 @@ export class FlightListComponent {
       this.flightResult = this.bookingSystem.fetchFlightData(this.searchCriteria);
       if (!this.flightResult.length) {
         this.showError = true;
+        this.errMsg = 'No flight found';
       }
     } else {
       this.showError = true;

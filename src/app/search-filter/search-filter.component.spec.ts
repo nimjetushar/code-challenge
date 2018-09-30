@@ -1,6 +1,10 @@
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchFilterComponent } from './search-filter.component';
+import { MyDatePickerModule } from 'mydatepicker';
+import { ToastModule, ToastsManager, ToastOptions } from 'ng2-toastr';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SearchFilterComponent', () => {
   let component: SearchFilterComponent;
@@ -8,9 +12,16 @@ describe('SearchFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchFilterComponent ]
+      declarations: [SearchFilterComponent],
+      imports: [
+        MyDatePickerModule,
+        FormsModule,
+        ToastModule,
+        NoopAnimationsModule
+      ],
+      providers: [ToastsManager, ToastOptions]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

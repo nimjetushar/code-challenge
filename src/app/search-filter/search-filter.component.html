@@ -1,57 +1,68 @@
 <div class="search-filter-container">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': isOneWay}" (click)="switchTab(true)" href="#">One
-        Way</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': !isOneWay}" (click)="switchTab(false)"
-        href="#">Return</a>
-    </li>
-  </ul>
-
-  <div class="fields-section">
-    <form #searchForm="ngForm" novalidate>
-      <div class="form-group auto-complete">
-        <input type="text" name="originCity" ngModel class="form-control" id="originCity"
-          placeholder="Enter city name" #originCity="ngModel" autocomplete="new_ele"
-          required>
-        <ul class="list-group auto-complete-list" *ngIf="originCityList?.length">
-          <li class="list-group-item" *ngFor="let item of originCityList" (click)="selectCity(item, 'originCity')">{{item}}</li>
-        </ul>
-      </div>
-      <div class="form-group auto-complete">
-        <input type="text" name="destinationCity" ngModel class="form-control" id="destinationCity"
-          placeholder="Enter city name" #destinationCity="ngModel" autocomplete="new_ele"
-          required>
-        <ul class="list-group auto-complete-list" *ngIf="destinationCityList?.length">
-          <li class="list-group-item" *ngFor="let item of destinationCityList" (click)="selectCity(item, 'destinationCity')">{{item}}</li>
-        </ul>
-      </div>
-      <div class="form-group">
-        <my-date-picker name="departurenDate" [options]="datePickerOptions" placeholder="Departure Date"
-          [(ngModel)]="deptDate" required></my-date-picker>
-      </div>
-      <div class="form-group">
-        <my-date-picker *ngIf="!isOneWay" name="returnDate" [options]="datePickerOptions"
-          placeholder="Return Date" [(ngModel)]="returnDate" required></my-date-picker>
-      </div>
-      <div class="form-group">
-        <input type="number" name="noPassenger" ngModel class="form-control" id="noPassenger"
-          placeholder="Passenger" autocomplete="new_ele" required>
-      </div>
-      <button class="btn btn-primary" (click)="searchCriteria(searchForm)" [disabled]="!searchForm.valid">Search</button>
-    </form>
+  <div class="d-block d-sm-none hide-pannel">
+    <i class="fa fa-minus-circle" *ngIf="expandPanel" (click)="togglePanel()"
+      aria-hidden="true"></i>
+    <i class="fa fa-plus-circle" *ngIf="!expandPanel" (click)="togglePanel()" aria-hidden="true"></i>
   </div>
-  <div class="range-sel">
-    <h5>Refine flight search</h5>
-    <div class="row">
-      <div class="col-1">1</div>
-      <div class="slide-container col-8">
-        <input type="range" min="1" max="10000" [(ngModel)]="priceRange" class="slider"
-          id="myRange">
+  <div *ngIf="!expandPanel" class="d-block d-sm-none pb-5"></div>
+  <div *ngIf="expandPanel">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active': isOneWay}" (click)="switchTab(true)"
+          href="#">One
+          Way</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active': !isOneWay}" (click)="switchTab(false)"
+          href="#">Return</a>
+      </li>
+    </ul>
+
+    <div class="fields-section">
+      <form #searchForm="ngForm" novalidate>
+        <div class="form-group auto-complete">
+          <input type="text" name="originCity" ngModel class="form-control" id="originCity"
+            placeholder="Enter city name" #originCity="ngModel" autocomplete="new_ele"
+            required>
+          <ul class="list-group auto-complete-list" *ngIf="originCityList?.length">
+            <li class="list-group-item" *ngFor="let item of originCityList" (click)="selectCity(item, 'originCity')">{{item}}</li>
+          </ul>
+        </div>
+        <div class="form-group auto-complete">
+          <input type="text" name="destinationCity" ngModel class="form-control" id="destinationCity"
+            placeholder="Enter city name" #destinationCity="ngModel" autocomplete="new_ele"
+            required>
+          <ul class="list-group auto-complete-list" *ngIf="destinationCityList?.length">
+            <li class="list-group-item" *ngFor="let item of destinationCityList" (click)="selectCity(item, 'destinationCity')">{{item}}</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <my-date-picker #deptDateC name="departurenDate" [options]="deptDateOption"
+            placeholder="Departure Date" [(ngModel)]="deptDate" (dateChanged)="dateChange($event, true)"
+            required></my-date-picker>
+        </div>
+        <div class="form-group">
+          <my-date-picker #returnDateC *ngIf="!isOneWay" name="returnDate" [options]="returnDateOption"
+            placeholder="Return Date" [(ngModel)]="returnDate" (dateChanged)="dateChange($event, false)"
+            required></my-date-picker>
+        </div>
+        <div class="form-group">
+          <input type="number" name="noPassenger" ngModel class="form-control" id="noPassenger"
+            placeholder="Passenger" autocomplete="new_ele" required>
+        </div>
+        <button class="btn btn-primary" (click)="searchCriteria(searchForm)" [disabled]="!searchForm.valid">Search</button>
+      </form>
+    </div>
+    <div class="range-sel">
+      <h5>Refine flight search</h5>
+      <div class="row">
+        <div class="col-1">1</div>
+        <div class="slide-container col-8">
+          <input type="range" min="1" max="10000" [(ngModel)]="priceRange" class="slider"
+            id="myRange">
+        </div>
+        <div class="col-2">10000</div>
       </div>
-      <div class="col-2">10000</div>
     </div>
   </div>
 </div>

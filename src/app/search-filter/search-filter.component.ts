@@ -1,11 +1,12 @@
 import { Component, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import { IMyDpOptions } from 'mydatepicker';
+import { IMyDpOptions, IMyDateModel, MyDatePicker } from 'mydatepicker';
 import { NgForm } from '@angular/forms';
 
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
 import { InputDebounceTimer, Cities } from '../constant/app.constant';
 import { SearchCriteria } from '../interfaces/app.interface';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-search-filter',
@@ -16,23 +17,29 @@ export class SearchFilterComponent implements AfterViewInit {
 
   @ViewChild('originCity') originCity: NgForm;
   @ViewChild('destinationCity') destinationCity: NgForm;
+  @ViewChild('deptDateC') deptDateC: MyDatePicker;
+  @ViewChild('returnDateC') returnDateC: MyDatePicker;
 
   @Output() searchData = new EventEmitter<SearchCriteria>();
 
   isOneWay = true;
-  datePickerOptions: IMyDpOptions;
+  returnDateOption: IMyDpOptions;
+  deptDateOption: IMyDpOptions;
   returnDate: any;
   deptDate: any;
   priceRange = 10000;
   originCityList: string[] = [];
   destinationCityList: string[] = [];
+  expandPanel = true;
 
   private cityList = Cities;
 
-  constructor() {
-    this.datePickerOptions = {
-      dateFormat: 'dd/mm/yyyy',
+  constructor(private toastr: ToastsManager) {
+    const options = {
+      dateFormat: 'dd/mm/yyyy'
     };
+    this.returnDateOption = Object.assign({}, options);
+    this.deptDateOption = Object.assign({}, options);
   }
 
   ngAfterViewInit(): void {
@@ -51,7 +58,17 @@ export class SearchFilterComponent implements AfterViewInit {
       });
   }
 
-  selectCity(itm: string, model: string) {
+  dateChange(data: IMyDateModel, status: boolean): void {
+    if (status) {
+      this.returnDateOption = Object.assign(this.returnDateOption, { disableUntil: data.date });
+      if (this.returnDateC && this.returnDate.setOptions) { this.returnDateC.setOptions(); }
+    } else {
+      this.deptDateOption = Object.assign(this.deptDateOption, { disableSince: data.date });
+      this.deptDateC.setOptions();
+    }
+  }
+
+  selectCity(itm: string, model: string): void {
     this[model].control.setValue(itm);
     this.originCityList = [];
     this.destinationCityList = [];
@@ -78,7 +95,16 @@ export class SearchFilterComponent implements AfterViewInit {
         noPassenger: data.noPassenger,
         priceRange: this.priceRange
       };
+
+    if (searchCriteria.originCity.toLowerCase() === searchCriteria.destinationCity.toLowerCase()) {
+      this.toastr.error(`Origin and destination can't be same`, 'Error!');
+      return;
+    }
     this.searchData.emit(searchCriteria);
+  }
+
+  togglePanel(): void {
+    this.expandPanel = !this.expandPanel;
   }
 
   private getFilteredList(data: string): string[] {

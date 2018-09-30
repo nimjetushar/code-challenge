@@ -11,10 +11,10 @@ export class BookingSystemService {
 
   constructor() { }
 
-  fetchFlightData(searchCriteria: SearchCriteria) {
+  fetchFlightData(searchCriteria: SearchCriteria = <any>{}) {
     const departure = searchCriteria.departurenDate,
-      from = searchCriteria.originCity.toLowerCase(),
-      to = searchCriteria.destinationCity.toLowerCase(),
+      from = searchCriteria.originCity && searchCriteria.originCity.toLowerCase(),
+      to = searchCriteria.destinationCity && searchCriteria.destinationCity.toLowerCase(),
       price = searchCriteria.priceRange;
 
     const filteredFlight = this.flightDetails.filter(flight => {

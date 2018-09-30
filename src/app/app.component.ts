@@ -9,12 +9,12 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 })
 export class AppComponent {
 
+  searchCriteria: SearchCriteria;
+
   constructor(private toastr: ToastsManager,
     vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
   }
-
-  searchCriteria: SearchCriteria;
 
   searchFilter(data: SearchCriteria) {
     this.searchCriteria = Object.assign({}, data);
