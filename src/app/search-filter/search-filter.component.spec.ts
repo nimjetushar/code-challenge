@@ -33,4 +33,10 @@ describe('SearchFilterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('save to be disabled', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.fields-section .btn.btn-primary').disabled).toBeFalsy();
+  }));
 });
