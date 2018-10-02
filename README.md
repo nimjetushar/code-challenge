@@ -1,5 +1,11 @@
 # FlightBookingSystem
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/11c4454fa30f498f88c5233a82e95aa8)](https://www.codacy.com/app/tpn/code-challenge1?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nimjetushar/code-challenge1&amp;utm_campaign=Badge_Grade)
+[![GitHub license](https://img.shields.io/github/license/nimjetushar/code-challenge1.svg)](https://github.com/nimjetushar/code-challenge1/blob/master/LICENSE)
+[![dependencies Status](https://david-dm.org/nimjetushar/code-challenge1/status.svg)](https://david-dm.org/nimjetushar/code-challenge1)
+[![devDependencies Status](https://david-dm.org/nimjetushar/code-challenge1/dev-status.svg)](https://david-dm.org/nimjetushar/code-challenge1?type=dev)
+
+
 Flight booking system.
 
 ## Development server
